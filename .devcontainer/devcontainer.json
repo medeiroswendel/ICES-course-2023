@@ -1,0 +1,29 @@
+{
+	"name": "R (rocker/r-ver base)",
+        "image": "ghcr.io/rocker-org/devcontainer/r-ver:4.1",
+
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+                        "packages": "make,gcc,g++,cmake,clang-tidy,clang-format"
+		},
+	    	 "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+			"packages": "cli,rlang,github::r4ss/r4ss,github::ss3sim/ss3sim,github::jabbamodel/ss3diags,ggplot2,plyr,knitr,reshape2,dplyr,scales,covr,png,grid,mvtnorm,github::flr/ggplotFL,github::flr/FLCore,github::flr/kobe,utf8",
+			"installSystemRequirements": true
+		}
+	},
+  	
+	"postCreateCommand": "echo 'options(repos = c(CRAN = \"https://cloud.r-project.org\"))' | sudo sh -c 'cat - >>\"${R_HOME}/etc/Rprofile.site\"'",
+		
+	"customizations": {
+	  "vscode": {
+	  		"extensions":[
+				"GitHub.codespaces",
+				"hbenl.vscode-test-explorer",
+				"reditorsupport.r",
+				"rdebugger.r-debugger",
+				"ms-vsliveshare.vsliveshare",
+				"mathematic.vscode-pdf"
+			]
+	  }
+	}
+}
